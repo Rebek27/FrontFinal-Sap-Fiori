@@ -1,0 +1,59 @@
+<mvc:View
+    controllerName="com.inv.sapfioriwebinvestments.controller.Users.pages.RolesManage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:tnt="sap.ui.core"
+    xmlns:tl="sap.ui.table"
+>
+
+    <m:Toolbar id="RolesManageToolBar" design="Transparent" class="customRoleToolbar">
+        <m:Button id="CreateRole" text="Crear" press="onCreate" icon="sap-icon://add" type="Accept"/>
+        <m:Button id="UpdateRole" text="Actualizar" press="onUpdate" icon="sap-icon://edit" type="Emphasized"/>
+        <m:Button id="DeleteRole" text="Eliminar" press="onDelete" icon="sap-icon://delete" type="Reject"/>
+
+        <m:SearchField 
+            id="SearchRoleField" 
+            width="25rem"
+            placeholder="Buscar roles..."
+            liveChange="onSearchRole" 
+        />
+
+        <m:ToolbarSpacer id="IdRoleToolSpacer"/>
+
+        <m:Button id="Privileges" text="Privilegios" press="onPressPrivileges" icon="sap-icon://role" type="Emphasized"/>
+    </m:Toolbar>
+
+    <tl:Table id="IdTable1RolesManageTable"
+              rows="{/roles}"
+              selectionMode="Single"
+              alternateRowColors="true"
+              selectionBehavior="RowOnly"
+              rowSelectionChange="onRoleRowSelected"
+              enableSelectAll="false"
+              enableColumnReordering="true"
+              rowActionCount="2"
+              busyIndicatorDelay="0"
+              visibleRowCount="15"
+    >
+        <tl:columns>
+            <tl:Column id="IdColumnRoleId" sortProperty="ROLEID" width="20%" autoResizable="true" resizable="true">
+                <m:Label id="IdLabelRoleId" text="RoleID" />
+                <tl:template>
+                    <m:Text id="IdTextRoleId" text="{ROLEID}" wrapping="false"/>
+                </tl:template>
+            </tl:Column>
+            <tl:Column id="IdColumnRoleName" sortProperty="ROLENAME" width="25%" autoResizable="true" resizable="true">
+                <m:Label id="IdLabelRoleName" text="RoleName" />
+                <tl:template>
+                    <m:Text id="IdTextRoleName" text="{ROLENAME}" wrapping="false"/>
+                </tl:template>
+            </tl:Column>
+            <tl:Column id="IdColumnDescription" sortProperty="DESCRIPTION" width="55%" autoResizable="true" resizable="true">
+                <m:Label id="IdLabelDescription" text="Description" />
+                <tl:template>
+                    <m:Text id="IdTextDescription" text="{DESCRIPTION}" wrapping="false"/>
+                </tl:template>
+            </tl:Column>
+        </tl:columns>
+    </tl:Table>
+</mvc:View>
